@@ -1,0 +1,42 @@
+  <%- include('Header', { title: 'Pokemon' }) %>
+  <body>
+
+
+   <h1>Pokedex</h1> 
+   <div id="boxit">
+   <div id="container">
+   
+   <div class="container">
+
+   <div id="name"> <% pokemon.forms.forEach(n => { %>
+    <p><%= n.name%></p>
+  
+  <% }) %></div>
+  <div id="pokemonimg">
+    <img src="<%= img %>" alt="pokemon" id="image"/>
+  </div></div></div>
+  <div id="boxit2">
+ <div id="stats">
+
+     <h3>Stats</h3>
+  <% pokemon.stats.forEach(s => { %>
+   
+    <li class="statname"><%= s.stat.name%>:  <%= s.base_stat%></li> 
+    
+  
+  <% }) %>
+   
+</div>
+<div id="types">
+  <h3>Tyypit</h3>
+    <% pokemon.types.forEach(t => { %>
+    <li><%= t.type.name %></li>
+  
+  <% }) %>
+
+</div></div></div>
+<div id="back">
+     <a href="/">Takaisin</a></div>
+     <%- include('footer') %>
+  </body>
+</html>

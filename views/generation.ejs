@@ -1,0 +1,15 @@
+  <%- include('Header', { title: 'Pokemons' }) %>
+  <body>
+    <h1>Pokedex</h1>
+   <div id="pokemonit">
+      <%allpokemons.forEach(pokemon =>{%>
+        <li>
+          <a href="/pokemon/<%= pokemon.pokemonid %>"><%= pokemon.name %></a>
+        </li>
+      <% }) %>
+   </div>
+     <div id="back">
+     <a href="/">Takaisin</a></div>
+     <%- include('footer') %>
+  </body>
+</html>
