@@ -33,12 +33,26 @@ app.get(`/generation/:id`, async (req, res) => {
   // const genword = generation.generation.name.split("-")[1];/*
   res.render("generation", { allpokemons, id });
 });
-app.get(`/pokemon/:id`, async (req, res) => {
-  const id = req.params.id;
-  const vastaus = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-  const pokemon = await vastaus.json();
-  const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+app.get("/search", (req, res) => {
+  const search = req.query.search.toLowerCase();
+  if (!search) return res.redirect("/");
+  res.redirect(`/pokemon/${search}`);
+});
+app.get("/pokemon/:identifier", async (req, res) => {
+  const identifier = req.params.identifier.toLowerCase();
 
-  res.render("pokemon", { pokemon, img });
+  try {
+    const vastaus = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${identifier}/`,
+    );
+
+    const pokemon = await vastaus.json();
+
+    const img = pokemon.sprites.other["official-artwork"].front_default;
+
+    res.render("pokemon", { pokemon, img });
+  } catch {
+    res.send("Pokemon ei löytynyt");
+  }
 });
 app.listen(port, host, () => console.log(`${host}:${port} kuuntelee...`));

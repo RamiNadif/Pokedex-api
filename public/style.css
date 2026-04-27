@@ -106,3 +106,31 @@ h1 {
   flex-wrap: wrap;
   gap: 10px;
 }
+#header {
+  border: solid black 2px;
+  background-color: lightgray;
+  padding: 20px;
+  color: black;
+  max-width: 240px;
+}
+#header input {
+  border: solid black 2px;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: lightgray;
+  width: 60%;
+  color: black;
+}
+#header button {
+  border: solid black 2px;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: lightgray;
+  color: black;
+}
+
+#header button:hover {
+  background-color: rgb(112, 104, 104);
+  color: white;
+  cursor: pointer;
+}
