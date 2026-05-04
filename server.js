@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 import express from "express";
+import ejs from "ejs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 const host = "localhost";
